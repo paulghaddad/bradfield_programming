@@ -1,7 +1,7 @@
 """ Homework 1: Control """
 
 # Q1
-from operator import add, sub
+from operator import add, sub, truth
 
 def a_plus_abs_b(a, b):
     """Return a+abs(b), but without calling abs.
@@ -94,13 +94,15 @@ def with_if_function():
     return if_function(c(), t(), f())
 
 def c():
+    return truth(None)
 
 
 def t():
-    "*** YOUR CODE HERE ***"
+    print(1)
+
 
 def f():
-    "*** YOUR CODE HERE ***"
+    print(2)
 
 # Q5
 def hailstone(n):
