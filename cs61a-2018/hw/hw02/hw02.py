@@ -153,7 +153,15 @@ def make_repeater(f, n):
     >>> make_repeater(square, 0)(5)
     5
     """
-    "*** YOUR CODE HERE ***"
+    def comp(x):
+        return f(f(x))
+
+    if n < 1:
+        return f
+
+    # lambda x: square(square(x))
+
+    return make_repeater(comp, n-2)
 
 # Q5
 def zero(f):
