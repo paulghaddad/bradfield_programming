@@ -34,7 +34,12 @@ def has_seven(k):
     ...       ['Assign', 'AugAssign'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    if k % 10 == 7:
+        return True
+    elif k // 10 == 0:
+        return False
+
+    return has_seven(k // 10)
 
 def pingpong(n):
     """Return the nth element of the ping-pong sequence.
@@ -67,7 +72,17 @@ def pingpong(n):
     >>> check(HW_SOURCE_FILE, 'pingpong', ['Assign', 'AugAssign'])
     True
     """
-    "*** YOUR CODE HERE ***"
+
+    def sequence(i, value, direction):
+        if i > n:
+            return value
+        elif i % 7 == 0 or has_seven(i):
+            return sequence(i + 1, value + direction, -direction)
+
+        return sequence(i + 1, value + direction, direction)
+
+    return sequence(1, 0, 1)
+
 
 def accumulate(combiner, base, n, term):
     """Return the result of combining the first n terms in a sequence and base.
@@ -114,7 +129,11 @@ def filtered_accumulate(combiner, base, pred, n, term):
     True
     """
     def combine_if(x, y):
-        "*** YOUR CODE HERE ***"
+        if pred(y):
+            return combiner(x, y)
+        else:
+            return x
+
     return accumulate(combine_if, base, n, term)
 
 def odd(x):
