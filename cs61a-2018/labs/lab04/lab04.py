@@ -17,7 +17,10 @@ def skip_add(n):
     ...       ['While', 'For'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    if n <= 0:
+        return 0
+
+    return n + skip_add(n-2)
 
 def summation(n, term):
 
@@ -38,7 +41,11 @@ def summation(n, term):
     True
     """
     assert n >= 1
-    "*** YOUR CODE HERE ***"
+
+    if n <= 1:
+        return term(n)
+
+    return term(n) + summation(n-1, term)
 
 def gcd(a, b):
     """Returns the greatest common divisor of a and b.
@@ -53,7 +60,12 @@ def gcd(a, b):
     >>> gcd(40, 40)
     40
     """
-    "*** YOUR CODE HERE ***"
+    smaller, larger = min(a, b), max(a, b)
+
+    if larger % smaller == 0:
+        return smaller
+
+    return gcd(smaller, larger % smaller)
 
 def couple(s1, s2):
     """Return a list that contains lists with i-th elements of two sequences
