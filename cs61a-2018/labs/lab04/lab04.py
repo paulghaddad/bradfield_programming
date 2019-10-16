@@ -80,7 +80,7 @@ def couple(s1, s2):
     [['c', 's'], [6, '1']]
     """
     assert len(s1) == len(s2)
-    "*** YOUR CODE HERE ***"
+    return [[s1[i], s2[i]] for i in range(len(s1))]
 
 def enumerate(s, start=0):
     """Returns a list of lists, where the i-th list contains i+start and
@@ -90,7 +90,7 @@ def enumerate(s, start=0):
     >>> enumerate('five', 5)
     [[5, 'f'], [6, 'i'], [7, 'v'], [8, 'e']]
     """
-    "*** YOUR CODE HERE ***"
+    return couple(range(start, start + len(s)), s)
 
 # Optional problems
 
