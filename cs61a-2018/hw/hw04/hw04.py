@@ -22,7 +22,11 @@ def taxicab(a, b):
     >>> taxicab(ess_a_bagel, times_square)
     9
     """
-    "*** YOUR CODE HERE ***"
+    street_blocks = abs(street(a) - street(b))
+    avenue_blocks = abs(avenue(a) - avenue(b))
+
+    return street_blocks + avenue_blocks
+
 
 # Mobiles
 
@@ -68,12 +72,13 @@ def end(s):
 def weight(size):
     """Construct a weight of some size."""
     assert size > 0
-    "*** YOUR CODE HERE ***"
+    return ['weight', size]
+
 
 def size(w):
     """Select the size of a weight."""
     assert is_weight(w), 'must call size on a weight'
-    "*** YOUR CODE HERE ***"
+    return w[1]
 
 def is_weight(w):
     """Whether w is a weight."""
@@ -121,7 +126,38 @@ def balanced(m):
     >>> balanced(mobile(side(1, w), side(1, v)))
     False
     """
-    "*** YOUR CODE HERE ***"
+    # m must be a mobile
+    left_m, right_m = left(m), right(m)
+
+    # left and right are weights
+    if is_weight(end(left_m)) and is_weight(end(right_m)):
+        left_torque = length(left_m) * size(end(left_m))
+        right_torque = length(right_m) * size(end(right_m))
+        return left_torque == right_torque
+
+    # left and right sides are mobiles
+
+    # left side is mobile; right side is weight
+
+    # left side is weight; right side is mobile
+
+
+
+    # left and right sides are weights
+
+    # left side is weight; right side is mobile
+    # if is_weight(end(left_m)) and is_mobile(end(right_m)):
+    #     return balanced(end(right_m))
+
+    # left side is mobile; right side is weight
+    # if is_mobile(end(left_m)) and is_weight(end(right_m)):
+    #     return balanced(end(left_m))
+
+    # left and right sides are mobiles
+    # return balanced(left_m) and balanced(right_m)
+
+
+
 
 def totals_tree(m):
     """Return a tree representing the mobile with its total weight at the root.
