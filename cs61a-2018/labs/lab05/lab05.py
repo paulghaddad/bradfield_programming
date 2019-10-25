@@ -181,20 +181,13 @@ def sprout_leaves(t, vals):
           1
           2
     """
-    new_branches = []
 
-    if is_leaf(t):
-        new_branches.append(tree(label(t), [tree(val) for val in vals]))
+    if branches(t):
+        new_subtrees = [sprout_leaves(branch, vals) for branch in branches(t)]
+    else:
+        new_subtrees = [tree(val) for val in vals]
 
-    for branch in branches(t):
-        if is_leaf(branch):
-            new_branches.append(tree(label(branch), [tree(val) for val in vals]))
-        else:
-            new_branches.append(branch)
-            new_tree = tree(label(t), new_branches)
-            new_tree += sprout_leaves(branches(branch), vals)
-
-    return tree(label(t), new_branches)
+    return tree(label(t), new_subtrees)
 
 
 def add_chars(w1, w2):
