@@ -215,7 +215,14 @@ def replace_leaf(t, old, new):
     >>> laerad == yggdrasil # Make sure original tree is unmodified
     True
     """
-    "*** YOUR CODE HERE ***"
+
+    if is_leaf(t):
+        if label(t) == old:
+            return tree(new)
+        else:
+            return tree(label(t))
+
+    return tree(label(t), [replace_leaf(branch, old, new) for branch in branches(t)])
 
 def make_fib():
     """Returns a function that returns the next Fibonacci number
