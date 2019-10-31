@@ -126,35 +126,25 @@ def balanced(m):
     >>> balanced(mobile(side(1, w), side(1, v)))
     False
     """
-    # m must be a mobile
-    left_m, right_m = left(m), right(m)
+    left_side, right_side = left(m), right(m)
 
-    # left and right are weights
-    if is_weight(end(left_m)) and is_weight(end(right_m)):
-        left_torque = length(left_m) * size(end(left_m))
-        right_torque = length(right_m) * size(end(right_m))
+    if is_mobile(end(left_side)) and is_mobile(end(right_side)):
+        balanced(end(left_side)) and balanced(end(right_side))
+
+    if is_weight(end(left_side)) and is_weight(end(right_side)):
+        left_torque = length(left_side) * size(end(left_side))
+        right_torque = length(right_side) * size(end(right_side))
         return left_torque == right_torque
 
-    # left and right sides are mobiles
-
-    # left side is mobile; right side is weight
-
-    # left side is weight; right side is mobile
-
-
-
-    # left and right sides are weights
-
-    # left side is weight; right side is mobile
-    # if is_weight(end(left_m)) and is_mobile(end(right_m)):
-    #     return balanced(end(right_m))
-
-    # left side is mobile; right side is weight
-    # if is_mobile(end(left_m)) and is_weight(end(right_m)):
-    #     return balanced(end(left_m))
-
-    # left and right sides are mobiles
-    # return balanced(left_m) and balanced(right_m)
+    # if is_mobile(end(left_side)) and is_mobile(end(right_side)):
+    #     left_torque = length(left_side) * total_weight(end(left_side))
+    #     right_torque = length(right_side) * size(end(right_side))
+    #     return balanced(end(left_side)) and left_torque == right_torque
+    #
+    # if is_weight(end(left_side)) and is_mobile(end(right_side)):
+    #     left_torque = length(left_side) * size(end(left_side))
+    #     right_torque = length(right_side) * total_weight(end(right_side))
+    #     return balanced(end(left_side)) and left_torque == right_torque
 
 
 
