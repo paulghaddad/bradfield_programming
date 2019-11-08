@@ -29,7 +29,12 @@ def scale(s, k):
     >>> [next(m) for _ in range(5)]
     [2, 4, 6, 8, 10]
     """
-    "*** YOUR CODE HERE ***"
+    # using a normal yield
+    # for i in s:
+    #     yield i * k
+
+    # using yield from
+    yield from map(lambda i: i * k, s)
 
 
 # Linked Lists
@@ -43,7 +48,20 @@ def link_to_list(link):
     >>> link_to_list(Link.empty)
     []
     """
-    "*** YOUR CODE HERE ***"
+    # Iterative solution
+    # link_elements = []
+    #
+    # while link:
+    #     link_elements.append(link.first)
+    #     link = link.rest
+    #
+    # return link_elements
+
+    # Recursive Solution
+    if not link:
+        return []
+
+    return [link.first] + link_to_list(link.rest)
 
 # Trees
 
